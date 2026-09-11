@@ -4,7 +4,7 @@ import java.util.List;
 public class StudyCourseBuilder {
     private String title;
     private String description;
-    private String language;
+    private CourseLanguage language;
     private CourseLevel level;
     private StudyFormat format;
     private List<String> modules;
@@ -25,7 +25,7 @@ public class StudyCourseBuilder {
         this.description = description;
         return this;
     }
-    public StudyCourseBuilder language(String language) {
+    public StudyCourseBuilder language(CourseLanguage language) {
         this.language = language;
         return this;
     }
@@ -55,7 +55,34 @@ public class StudyCourseBuilder {
         return this;
     }
 
-    public StudyCourse build() {
+    public StudyCourse build() throws IllegalStateException {
+        if (title == null || title.isBlank()) {
+            throw new IllegalStateException("Title of course must be not empty");
+        }
+        if (language == null) {
+            throw new IllegalStateException("Language of course must be not empty");
+        }
+        if (level == null) {
+            throw new IllegalStateException("Level of course must be not null");
+        }
+        if (format == null) {
+            throw new IllegalStateException("Format of course must be not null");
+        }
+        if (modules.isEmpty()) {
+            throw new IllegalStateException("Modules of course must be contain something");
+        }
+        for (String module : modules) {
+            if (module == null || module.isBlank()) {
+                throw new IllegalStateException("Module of course must be not empty");
+            }
+        }
+        if (durationWeeks <= 0) {
+            throw new IllegalStateException("DurationWeeks must be greater than 0");
+        }
+
+        if (hoursPerWeek <= 0) {
+            throw new IllegalStateException("Hour per week must be greater than 0");
+        }
         return new StudyCourse(title,description,language,level,format,modules,durationWeeks, hoursPerWeek,finalProject);
     }
 }

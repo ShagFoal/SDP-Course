@@ -3,7 +3,7 @@ import java.util.List;
 public class StudyCourse {
     private String title;
     private String description;
-    private String language;
+    private CourseLanguage language;
     private CourseLevel level;
     private StudyFormat format;
     private List<String> modules;
@@ -11,13 +11,13 @@ public class StudyCourse {
     private int hoursPerWeek;
     private String finalProject;
 
-    public StudyCourse(String title, String description, String language, CourseLevel level, StudyFormat format, List<String> modules, int durationWeeks, int hoursPerWeek, String finalProject) {
+    public StudyCourse(String title, String description, CourseLanguage language, CourseLevel level, StudyFormat format, List<String> modules, int durationWeeks, int hoursPerWeek, String finalProject) {
         this.title = title;
         this.description = description;
         this.language = language;
         this.level = level;
         this.format = format;
-        this.modules = modules;
+        this.modules = List.copyOf(modules);
         this.durationWeeks = durationWeeks;
         this.hoursPerWeek = hoursPerWeek;
         this.finalProject = finalProject;
@@ -35,7 +35,7 @@ public class StudyCourse {
         return description;
     }
 
-    public String getLanguage() {
+    public CourseLanguage getLanguage() {
         return language;
     }
 
@@ -65,12 +65,26 @@ public class StudyCourse {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "StudyCourse{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", language='" + language + '\'' +
+                ", level=" + level +
+                ", format=" + format +
+                ", modules=" + modules +
+                ", durationWeeks=" + durationWeeks +
+                ", hoursPerWeek=" + hoursPerWeek +
+                ", finalProject='" + finalProject + '\'' +
+                '}';
     }
 }
 
 enum CourseLevel {
     BEGINNER, INTERMEDIATE, ADVANCED
+}
+
+enum CourseLanguage {
+    ENGLISH, RUSSIAN, KAZAKH
 }
 
 enum StudyFormat {
