@@ -12,7 +12,7 @@ public class StudyCourseBuilder {
     private int hoursPerWeek;
     private String finalProject;
 
-    public StudyCourseBuilder () {
+    public StudyCourseBuilder() {
         modules = new ArrayList<>();
     }
 
@@ -25,28 +25,34 @@ public class StudyCourseBuilder {
         this.description = description;
         return this;
     }
+
     public StudyCourseBuilder language(CourseLanguage language) {
         this.language = language;
         return this;
     }
+
     public StudyCourseBuilder level(CourseLevel level) {
         this.level = level;
         return this;
     }
+
     public StudyCourseBuilder format(StudyFormat format) {
         this.format = format;
         return this;
     }
+
     public StudyCourseBuilder addModule(String module) {
         modules.add(module);
         return this;
     }
+
     public StudyCourseBuilder durationWeeks(int durationWeeks) {
         this.durationWeeks = durationWeeks;
         return this;
     }
-    public StudyCourseBuilder hourPerWeek(int hourPerWeek) {
-        this.hoursPerWeek = hourPerWeek;
+
+    public StudyCourseBuilder hoursPerWeek(int hoursPerWeek) {
+        this.hoursPerWeek = hoursPerWeek;
         return this;
     }
 
@@ -55,7 +61,7 @@ public class StudyCourseBuilder {
         return this;
     }
 
-    public StudyCourse build() throws IllegalStateException {
+    private void validate() {
         if (title == null || title.isBlank()) {
             throw new IllegalStateException("Title of course must be not empty");
         }
@@ -83,6 +89,10 @@ public class StudyCourseBuilder {
         if (hoursPerWeek <= 0) {
             throw new IllegalStateException("Hour per week must be greater than 0");
         }
-        return new StudyCourse(title,description,language,level,format,modules,durationWeeks, hoursPerWeek,finalProject);
+    }
+
+    public StudyCourse build() {
+        validate();
+        return new StudyCourse(title, description, language, level, format, modules, durationWeeks, hoursPerWeek, finalProject);
     }
 }

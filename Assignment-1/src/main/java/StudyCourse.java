@@ -88,5 +88,5 @@ enum CourseLanguage {
 }
 
 enum StudyFormat {
-    SELF_PACED,INSTRUCTOR_LED
+    SELF_PACED, INSTRUCTOR_LED
 }

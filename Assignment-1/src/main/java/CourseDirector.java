@@ -1,4 +1,4 @@
-public class  CourseDirector {
+public class CourseDirector {
     public static void constructJavaBasicCourse(StudyCourseBuilder builder) {
         builder.title("Java Basics")
                 .description("A self-paced course covering Java fundamentals, OOP and collections")
@@ -9,7 +9,7 @@ public class  CourseDirector {
                 .addModule("OOP")
                 .addModule("Collections")
                 .durationWeeks(8)
-                .hourPerWeek(5);
+                .hoursPerWeek(5);
     }
 
     public static void constructJavaBackendCourse(StudyCourseBuilder builder) {
@@ -23,7 +23,7 @@ public class  CourseDirector {
                 .addModule("SQL and PostgreSQL")
                 .addModule("Docker and Deployment")
                 .durationWeeks(8)
-                .hourPerWeek(15)
+                .hoursPerWeek(15)
                 .finalProject("Build a task management REST API");
     }
 }

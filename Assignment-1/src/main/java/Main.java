@@ -24,7 +24,7 @@ public class Main {
                 .addModule("Variables and Loops")
                 .addModule("Functions")
                 .durationWeeks(4)
-                .hourPerWeek(5)
+                .hoursPerWeek(5)
                 .build();
 
         System.out.println("\nCustom course:");
@@ -40,7 +40,7 @@ public class Main {
                     .format(StudyFormat.SELF_PACED)
                     .addModule("Java Core")
                     .durationWeeks(0)
-                    .hourPerWeek(5)
+                    .hoursPerWeek(5)
                     .build();
 
             System.out.println(invalidCourse);
