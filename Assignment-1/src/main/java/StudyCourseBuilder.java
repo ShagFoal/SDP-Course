@@ -85,7 +85,6 @@ public class StudyCourseBuilder {
         if (durationWeeks <= 0) {
             throw new IllegalStateException("DurationWeeks must be greater than 0");
         }
-
         if (hoursPerWeek <= 0) {
             throw new IllegalStateException("Hour per week must be greater than 0");
         }
